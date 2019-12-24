@@ -69,8 +69,8 @@ class PruneFilter():
             batchnorm.weight = nn.Parameter(batchnorm.weight[remained_list])
             if batchnorm.bias is not None:
                 batchnorm.bias = nn.Parameter(batchnorm.bias[remained_list])
-            batchnorm.running_var = nn.Parameter(batchnorm.running_var[remained_list])
-            batchnorm.running_mean = nn.Parameter(batchnorm.running_mean[remained_list])
+            batchnorm.running_var = batchnorm.running_var[remained_list]
+            batchnorm.running_mean = batchnorm.running_mean[remained_list]
 
         return target, next_layer, batchnorm
 
