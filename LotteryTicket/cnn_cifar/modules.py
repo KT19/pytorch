@@ -105,6 +105,7 @@ class Evaluation():
         with torch.no_grad():
             for img,target in tqdm(self.testloader):
                 img = img.to(device)
+                target = target.to(device)
                 total += img.size(0)
 
                 output = model(img)

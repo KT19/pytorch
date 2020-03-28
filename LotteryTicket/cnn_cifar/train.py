@@ -36,8 +36,8 @@ def freeze_param(model):
     """
     for name,param in model.named_parameters():
         if "weight" in name:
-            grad = param.grad.data.numpy()
-            masked_grad = np.where(param == 0, 0, grad)
+            grad = param.grad.data.to("cpu").numpy()
+            masked_grad = np.where(param.to("cpu") == 0, 0, grad)
             param.grad.data = torch.Tensor(masked_grad).to(device)
 
 def train():
