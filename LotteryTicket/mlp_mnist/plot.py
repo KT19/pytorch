@@ -21,7 +21,7 @@ def plot_results():
         if num == "1":
             label_name="original"
         else:
-            label_name="pruned_"+num+"times"
+            label_name="pruned_"+str(int(num)-1)+"times"
 
         if label_name == "original":
             plt.plot(df["epoch"],df["accuracy"],marker="x",label=label_name)
