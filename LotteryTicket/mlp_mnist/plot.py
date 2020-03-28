@@ -18,12 +18,15 @@ def plot_results():
         num = name.split(".")[0]
 
         df = pd.read_csv(f)
-        if num == 1:
+        if num == "1":
             label_name="original"
         else:
             label_name="pruned_"+num+"times"
 
-        plt.plot(df["epoch"],df["accuracy"],label=label_name)
+        if label_name == "original":
+            plt.plot(df["epoch"],df["accuracy"],marker="x",label=label_name)
+        else:
+            plt.plot(df["epoch"],df["accuracy"],marker="o",label=label_name)
 
     file = "random_init.csv"
     df = pd.read_csv(save_file_path+"/"+file)
