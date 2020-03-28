@@ -26,7 +26,7 @@ class CNN(nn.Module):
             if l == "D":
                 modules.append(nn.MaxPool2d(kernel_size=(2,2),stride=(2,2)))
             else:
-                modules.append(nn.Conv2d(prev_c, l, kernel_size=(3,3), stride=(1,1), padding=(1,1)))
+                modules.append(nn.Conv2d(prev_c, l, kernel_size=(3,3), stride=(1,1), padding=(1,1), bias=False))
                 modules.append(nn.ReLU())
                 prev_c = l
 
