@@ -44,8 +44,6 @@ class CNN(nn.Module):
                 self.mask.append(torch.ones(o_size, i_size, kh, kw, device=device))
                 self.model_params.append(o_size*i_size*kh*kw)
 
-        self.prev_masks = [0 for i in range(len(self.mask))]
-
     def forward(self, x):
         y = self.model(x)
         y = y.view(y.size(0), -1)
@@ -63,8 +61,11 @@ class CNN(nn.Module):
                 """
                 prune_params = int(self.model_params[curr]*rat)
                 weight = layer.weight.data.reshape(-1)
-                weight = abs(weight)
-                indicies = torch.argsort(weight)[self.prev_masks[curr]:self.prev_masks[curr]+prune_params] #for array
+
+                weight = abs(weight.to("cpu").numpy())
+                weight[weight == 0] = max(weight)+1 #i.e., zero is always larger
+
+                indicies = np.argsort(weight)[:prune_params]
 
                 """
                 zero out
@@ -80,7 +81,6 @@ class CNN(nn.Module):
                 print(prune_params)
                 print(one_num)
 
-                self.prev_masks[curr] += prune_params
                 curr += 1
 
     def mask_out(self):
