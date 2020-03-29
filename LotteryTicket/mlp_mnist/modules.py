@@ -30,8 +30,6 @@ class MLP(nn.Module):
                 self.mask.append(torch.ones(row, col))
                 self.model_params.append(row*col)
 
-        self.prev_masks = [0 for i in range(len(self.mask))]
-
     def forward(self, x):
         return self.model(x)
 
@@ -47,8 +45,11 @@ class MLP(nn.Module):
                 """
                 prune_params = int(self.model_params[curr]*rat)
                 weight = layer.weight.data.reshape(-1)
-                weight = abs(weight)
-                indicies = torch.argsort(weight)[self.prev_masks[curr]:self.prev_masks[curr]+prune_params] #for array
+                weight = abs(weight.to("cpu").numpy())
+
+                weight[weight == 0] = max(weight)+1 #i.e., zero is always larger
+
+                indicies = np.argsort(weight)[:prune_params]
 
                 """
                 zero out
@@ -64,7 +65,6 @@ class MLP(nn.Module):
                 print(prune_params)
                 print(one_num)
 
-                self.prev_masks[curr] += prune_params
                 curr += 1
 
     def mask_out(self):
