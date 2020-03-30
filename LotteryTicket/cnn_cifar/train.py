@@ -17,7 +17,7 @@ def save_params(model,path="save_model"):
     path: path to save directory
     """
     model = model.to("cpu")
-    model_name = "mlp_model.pth"
+    model_name = "cnn_model.pth"
     os.makedirs(path,exist_ok=True)
     torch.save(model.state_dict(),path+"/"+model_name)
     print("save model parameters")
@@ -25,7 +25,7 @@ def save_params(model,path="save_model"):
 
 def load_params(model, path="save_model"):
     model = model.to("cpu")
-    model_name = "mlp_model.pth"
+    model_name = "cnn_model.pth"
     model.load_state_dict(torch.load(path+"/"+model_name))
     print("load model parameters")
     model = model.to(device)
@@ -74,6 +74,7 @@ def train():
         for epoch in range(1, epochs+1, 1):
             print("epoch: [{}]/[{}]".format(epoch, epochs))
             for img,target in tqdm(trainloader):
+                break
                 optimizer.zero_grad()
                 img = img.to(device)
                 target = target.to(device)
@@ -112,6 +113,7 @@ def train():
     for epoch in range(1, epochs+1, 1):
         print("epoch: [{}]/[{}]".format(epoch, epochs))
         for img,target in tqdm(trainloader):
+            break
             optimizer.zero_grad()
             img = img.to(device)
             target = target.to(device)
