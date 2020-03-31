@@ -3,9 +3,11 @@ This repository is the re-Implementation of the LT at Scale.
 Using late initialization to prune the cnn model
 
 ## Experimental Setup(in this repo)
-1. dataset・・・cifar10
-2. epochs・・・30
-3. cnn model・・・tiny version (please check train.py and modules.py)
+1. dataset is cifar10
+2. total 30epochs
+3. cnn model is tiny version (please check train.py and modules.py)
+4. learning rate=0.1, momentum=0.9, weight_decay=5e-4 using SGD optimizer
+5. Standard Data Augmentation is used
 
 ![The results of above setting](results.png)
 
