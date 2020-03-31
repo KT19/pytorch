@@ -9,6 +9,8 @@ Using late initialization to prune the cnn model
 4. learning rate=0.1, momentum=0.9, weight_decay=5e-4 using SGD optimizer
 5. Standard Data Augmentation is used
 
+For late resetting, train 1 epoch. 
+
 ![The results of above setting](results.png)
 
 ### How to use?(example)
