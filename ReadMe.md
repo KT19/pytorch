@@ -14,6 +14,7 @@ Additional detail is written in each file.
 4. channel_pruning: pruning method for convolutional layer (usually, used for model acceleration)
 5. LotteryTicket: Initial version, some tricks, like warmup, are not implemented.
 6. LotteryTicket_late_init: late resetting (described in paper) is applied.
+7. mixup: augmentation method
 
 If you find some bags or opinions (e.g., please implementing xxx ), feel free to make an issue.
 When I have time, I confirm that.
