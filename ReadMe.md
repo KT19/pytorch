@@ -16,5 +16,4 @@ Additional detail is written in each file.
 6. LotteryTicket_late_init: late resetting (described in paper) is applied.
 7. mixup: augmentation method
 
-If you find some bags or opinions (e.g., please implementing xxx ), feel free to make an issue.
-When I have time, I confirm that.
+If you find some bags or opinions, feel free to make an issue.
