@@ -6,7 +6,7 @@ python3 train.py
 ```
 
 ### Experimental results
-![results](plot_results.png)
+![results](img/plot_results.png)
 
 ### Exepriment details
 1. Using VGG16 with batch normalization.
