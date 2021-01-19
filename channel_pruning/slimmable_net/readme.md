@@ -5,9 +5,6 @@
 python3 train.py
 ```
 
-### Experimental results
-![results](img/plot_results.png)
-
 ### Exepriment details
 1. Using VGG16 with batch normalization.
 2. Optimizer = SGD, lr = 0.1, momentum=0.9, weight_decay = 5e-4
